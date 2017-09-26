@@ -4,6 +4,15 @@
 
 
 <%= form_for @topic do |f| %>
+<% if @topic.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @topic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
   <%= f.text_field :content, placeholder: "今なにしてる？" %>
   <br>
   <%= f.submit "投稿"%>
@@ -14,7 +23,6 @@
 
 <div class="container">
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
-    <p><%= notice %></p>
     <% @topics.each do |topic| %>
       <p>
 

@@ -16,6 +16,7 @@ class TopicsController < ApplicationController
     @topic.user_id = current_user.id
     if @topic.save
       redirect_to action: :index, notice: "ブログを作成しました！"
+      NoticeMailer.sendmail_topic(@topic).deliver
     else
       redirect_to action: :index
     end
