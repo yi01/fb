@@ -1,0 +1,36 @@
+<section class="main-header">
+  <p class="flash"><%= notice %><%= alert %></p>
+</section>
+
+
+<%= form_for @topic do |f| %>
+  <%= f.text_field :content, placeholder: "今なにしてる？" %>
+  <br>
+  <%= f.submit "投稿"%>
+<% end %>
+
+
+
+
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <p><%= notice %></p>
+    <% @topics.each do |topic| %>
+      <p>
+
+        <div style="background-color: white; width: 500px; height: 400px; margin: 0 auto;">
+          <div style="text-align: left; padding: 15px;">
+            <%= topic.user.name %>
+          </div>
+          <div style="text-align: left; padding: 15px; width: 50%;">
+            <%= topic.content %>
+          </div>
+        </div>
+        <%= link_to "詳細", topic_path(topic.id) %>
+        <%= link_to "編集", edit_topic_path(topic.id) %>
+        <%= link_to "削除", topic_path(topic.id), method: :delete, data: {confirm: "削除しますか？"} %>
+      </p>
+
+    <% end %>
+  </div>
+</div>
