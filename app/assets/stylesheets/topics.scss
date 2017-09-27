@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.avatar-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    background-size: cover;
+}
 img{
   max-width: 100%;
 }
