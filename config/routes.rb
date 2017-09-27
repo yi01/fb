@@ -4,10 +4,6 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  get 'relationships/create'
-
-  get 'relationships/destroy'
-
   resources :users, only: [:index]
   resources :relationships, only: [:create, :destroy]
   devise_for :users, controllers: {
