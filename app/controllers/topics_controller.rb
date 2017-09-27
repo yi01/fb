@@ -14,16 +14,17 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topics_params)
     @topic.user_id = current_user.id
-    if @topic.save
-      redirect_to action: :index, notice: "ブログを作成しました！"
-      NoticeMailer.sendmail_topic(@topic).deliver
-    else
-      redirect_to action: :index
-    end
+      if @topic.save
+        redirect_to action: :index
+        NoticeMailer.sendmail_topic(@topic).deliver
+      else
+        redirect_to action: :index
+      end
   end
 
   def show
-
+    @comment = @topic.comments.build
+    @comments = @topic.comments
   end
 
   def edit

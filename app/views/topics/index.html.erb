@@ -7,7 +7,9 @@
 <% if @topic.errors.any? %>
   <div id="error_explanation" class="alert alert-danger">
     <ul>
-      <% @topic.errors.full_messages.each do |message| %>
+      <h2><%= @product.errors.count %>件のエラーがあります。</h2>
+
+      <%= @topic.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
@@ -25,22 +27,40 @@
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     <% @topics.each do |topic| %>
       <div class="row">
-        <div style="background-color: white; width: 500px; height: 400px; margin: 0 auto;">
+        <div style="background-color: white; width: 500px; height: 400px; margin: 0 auto; margin-top: 50px;">
           <div style="text-align: left; padding: 15px;">
+
             <% if topic.user.avatar? %>
               <%= image_tag topic.user.avatar, class: "avatar-image" %>
             <% else %>
               <%= image_tag "no_image.png", class: "avatar-image" %>
             <% end %>
-            <%= topic.user.name %>
+          <%= topic.user.name %>
+        <%= link_to topic_path(topic) do %>
           </div>
-          <div style="text-align: left; padding: 15px; width: 50%;">
+          <div style="text-align: left; padding: 15px; width: 50%; border-top: 1px solid gray;">
             <%= topic.content %>
           </div>
+
+            <%= link_to "詳細", topic_path(topic.id) %>
+          <% if topic.user_id == current_user.id%>
+            <%= link_to "編集", edit_topic_path(topic.id) %>
+            <%= link_to "削除", topic_path(topic.id), method: :delete, data: {confirm: "削除しますか？"} %>
+          <% end %>
         </div>
-        <%= link_to "詳細", topic_path(topic.id) %>
-        <%= link_to "編集", edit_topic_path(topic.id) %>
-        <%= link_to "削除", topic_path(topic.id), method: :delete, data: {confirm: "削除しますか？"} %>
+        <% end %>
+        <% if topic.comments.exists? %>
+          <p style="padding: 10px;">コメントを表示</p>
+        <% end %>
+            <% topic.comments.each do |comment| %>
+              <div class="comments" style="clear: both;">
+                <%= comment.user.name %>
+                <p ><%= comment.content %></p>
+             </div>
+            <% end %>
+
+
+
       </div>
 
     <% end %>
