@@ -7,7 +7,7 @@
 <% if @topic.errors.any? %>
   <div id="error_explanation" class="alert alert-danger">
     <ul>
-      <h2><%= @product.errors.count %>件のエラーがあります。</h2>
+      <h2><%= @topic.errors.count %>件のエラーがあります。</h2>
 
       <%= @topic.errors.full_messages.each do |message| %>
         <li><%= message %></li>
