@@ -1,7 +1,7 @@
 lock '3.6.0'
 
 # デプロイするアプリケーション名
-set :application, 'achieve'
+set :application, 'facebookclone'
 
 # cloneするgitのレポジトリ（xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
 set :repo_url, 'https://github.com/yi01/fb'
@@ -10,7 +10,7 @@ set :repo_url, 'https://github.com/yi01/fb'
 set :branch, ENV['BRANCH'] || 'master'
 
 # deploy先のディレクトリ。
-set :deploy_to, '/var/www/achieve'
+set :deploy_to, '/var/www/facebookclone'
 
 # シンボリックリンクをはるフォルダ・ファイル
 set :linked_files, %w{.env config/secrets.yml}
