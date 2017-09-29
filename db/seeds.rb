@@ -17,3 +17,10 @@
                uid: uid
                )
 end
+
+100.times do |n|
+  content = Faker::Lorem.word
+  Topic.create!(content: content,
+
+               )
+end
