@@ -10,11 +10,13 @@
   provider = Faker::Lorem.word
   uid = Faker::Number.between(1, 1000 )
   password = "password"
+  avatar = Faker::Avatar.image
   User.create!(email: email,
                password: password,
                password_confirmation: password,
                provider: provider,
-               uid: uid
+               uid: uid,
+               avatar: avatar
                )
 end
 
