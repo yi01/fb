@@ -77,3 +77,13 @@
 <p style="margin-top: 10px;"><%= button_to "登録解除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <p style="margin-top: 10px;"><%= link_to "戻る", :back %></p>
+
+
+<h2 style="margin-top: 20px;">フォロー</h2>
+<% @user.followers.each do |follow|%>
+  <%= follow.name %>
+<% end %>
+<h2 style="margin-top: 20px;">フォロワー</h2>
+<% @user.followed_users.each do |follower|%>
+  <p><%= follower.name %></p>
+<% end %>
