@@ -18,7 +18,7 @@ class TopicsController < ApplicationController
         redirect_to action: :index
         NoticeMailer.sendmail_topic(@topic).deliver
       else
-        redirect_to action: :index
+        redirect_to action: :index, notice: '文字を入力してください'
       end
   end
 

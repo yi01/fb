@@ -8,7 +8,6 @@ class NoticeMailer < ApplicationMailer
   def sendmail_topic(topic)
     @topic = topic
 
-    mail to: "yi0123456789@icloud.com",
-           subject: '【facebook】topicが投稿されました'
+    mail to: "yi0123456789@icloud.com",subject: "sendtopic"
   end
 end
