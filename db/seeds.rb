@@ -31,3 +31,11 @@ end
           content: content
                )
 end
+
+10.times do |n|
+  content = Faker::Lorem.word
+  Comment.create!(
+          user_id: User.first.id,
+          content: content
+               )
+end
