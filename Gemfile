@@ -64,6 +64,7 @@ gem 'mini_magick'
 gem 'faker'
 gem 'fog'
 gem 'unicorn'
+gem 'kaminari'
 
 gem 'therubyracer', platforms: :ruby
 
