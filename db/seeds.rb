@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-10.times do |n|
+1.times do |n|
   email = Faker::Internet.email
   provider = Faker::Lorem.word
   uid = Faker::Number.between(1, 1000 )
@@ -22,9 +22,10 @@
                )
 end
 
-10.times do |n|
+1.times do |n|
   content = Faker::Lorem.word
-  Topic.create!(content: content,
-
+  Topic.create!(
+          user_id: User.first.id,
+          content: content,
                )
 end

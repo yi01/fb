@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
       if @comment.save
-        format.js {render :index }
+        format.js {render :index }, notice: "文字を入力してください"
       else
         format.html {render :new }
       end
