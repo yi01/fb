@@ -1,6 +1,3 @@
-<section class="main-header">
-  <p class="flash"><%= notice %><%= alert %></p>
-</section>
 
 
 <%= form_for @topic do |f| %>
@@ -20,6 +17,7 @@
   <%= f.submit "投稿"%>
 <% end %>
 
+<p><%= flash[:notice] %></p>
 
 
 <div class="container">
@@ -29,11 +27,8 @@
         <div style="background-color: white; width: 500px; height: 400px; margin: 0 auto; margin-top: 50px;">
           <div style="text-align: left; padding: 15px;">
 
-            <% if topic.user.avatar? %>
-              <%= image_tag topic.user.avatar, class: "avatar-image" %>
-            <% else %>
-              <%= image_tag "no_image.png", class: "avatar-image" %>
-            <% end %>
+          <%= profile_img(topic.user) %>
+
           <%= topic.user.name %>
         <%= link_to topic_path(topic) do %>
           </div>
